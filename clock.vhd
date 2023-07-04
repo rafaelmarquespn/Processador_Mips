@@ -1,0 +1,30 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity clock is
+    generic (
+        CLK_PERIOD : time := 10 ns  -- Clock period, default value is 10 ns
+    );
+    port (
+        clk : out std_logic
+    );
+end entity clock;
+
+architecture rtl of clock is
+    signal clk_internal : std_logic := '0';  -- Internal signal for the clock
+
+begin
+    -- Clock generation process
+    clk_process: process
+    begin
+        while now < 1 sec loop  -- Run the clock for 1 second
+            clk_internal <= not clk_internal;  -- Toggle the clock signal
+            wait for CLK_PERIOD / 2;  -- Wait for half of the clock period
+        end loop;
+    end process clk_process;
+
+    -- Assign the internal clock signal to the output port
+    clk <= clk_internal;
+
+end architecture rtl;
