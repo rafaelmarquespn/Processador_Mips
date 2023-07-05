@@ -18,7 +18,7 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "07/05/2023 19:04:57"
+-- Generated on "07/05/2023 15:06:39"
                                                              
 -- Vhdl Test Bench(with test vectors) for design  :          main
 -- 
@@ -33,52 +33,55 @@ END main_vhd_vec_tst;
 ARCHITECTURE main_arch OF main_vhd_vec_tst IS
 -- constants                                                 
 -- signals                                                   
-SIGNAL adress : STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL alu_out : STD_LOGIC_VECTOR(3 DOWNTO 0);
 SIGNAL clock : STD_LOGIC;
-SIGNAL entra_pc : STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL instruction_funct : STD_LOGIC_VECTOR(5 DOWNTO 0);
+SIGNAL instruction_opcode : STD_LOGIC_VECTOR(5 DOWNTO 0);
 SIGNAL instruction_total : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL joinpc_instr : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL pos_adder : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL pre_tira : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL sai_ext : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL shifter32_2 : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL pin_name4 : STD_LOGIC;
+SIGNAL pin_name5 : STD_LOGIC;
+SIGNAL pin_name6 : STD_LOGIC;
 COMPONENT main
 	PORT (
-	adress : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	alu_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 	clock : IN STD_LOGIC;
-	entra_pc : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	instruction_funct : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+	instruction_opcode : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
 	instruction_total : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	joinpc_instr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	pos_adder : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	pre_tira : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	sai_ext : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	shifter32_2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	pin_name4 : OUT STD_LOGIC;
+	pin_name5 : OUT STD_LOGIC;
+	pin_name6 : OUT STD_LOGIC
 	);
 END COMPONENT;
 BEGIN
 	i1 : main
 	PORT MAP (
 -- list connections between master ports and signals
-	adress => adress,
+	alu_out => alu_out,
 	clock => clock,
-	entra_pc => entra_pc,
+	instruction_funct => instruction_funct,
+	instruction_opcode => instruction_opcode,
 	instruction_total => instruction_total,
-	joinpc_instr => joinpc_instr,
-	pos_adder => pos_adder,
-	pre_tira => pre_tira,
-	sai_ext => sai_ext,
-	shifter32_2 => shifter32_2
+	pin_name4 => pin_name4,
+	pin_name5 => pin_name5,
+	pin_name6 => pin_name6
 	);
 
 -- clock
 t_prcs_clock: PROCESS
 BEGIN
-LOOP
+	FOR i IN 1 TO 9
+	LOOP
+		clock <= '0';
+		WAIT FOR 50000 ps;
+		clock <= '1';
+		WAIT FOR 50000 ps;
+	END LOOP;
 	clock <= '0';
-	WAIT FOR 200000 ps;
+	WAIT FOR 50000 ps;
 	clock <= '1';
-	WAIT FOR 200000 ps;
-	IF (NOW >= 100000000 ps) THEN WAIT; END IF;
-END LOOP;
+	WAIT FOR 49000 ps;
+	clock <= '0';
+WAIT;
 END PROCESS t_prcs_clock;
 END main_arch;

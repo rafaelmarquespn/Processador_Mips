@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 dC:/intelFPGA_lite/18.1/Projects/gitproject/Processador_Mips/simulation/qsim
 Emain
-Z1 w1688434765
+Z1 w1688594701
 Z2 DPx8 cyclonev 18 cyclonev_atom_pack 0 22 OGn598C_0mX<WSGfCb?AK2
 Z3 DPx8 cyclonev 19 cyclonev_components 0 22 CcdNAEi>PYH4@n><]NQ]V2
 Z4 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 QZo1Vh6en2ZO3=hNmAfQ>0
@@ -24,13 +24,13 @@ Z11 8Mipsv3.vho
 Z12 FMipsv3.vho
 l0
 L38
-VJW7eGXO:;j;N;SV]V1O271
-!s100 =@4k[[:2DM4ij9I0W;GEG0
+Vb9YP8^JfkJT>H5:Vc`ACC2
+!s100 8N]iQzola^U:FXcAX]:BK3
 Z13 OV;C;10.5b;63
 32
-Z14 !s110 1688434769
+Z14 !s110 1688594702
 !i10b 1
-Z15 !s108 1688434768.000000
+Z15 !s108 1688594702.000000
 Z16 !s90 -work|work|Mipsv3.vho|
 Z17 !s107 Mipsv3.vho|
 !i113 1
@@ -46,11 +46,11 @@ R7
 R8
 R9
 R10
-DEx4 work 4 main 0 22 JW7eGXO:;j;N;SV]V1O271
-l152
-L97
-VLn^Y7L<4FcbEPA`^8c8iI2
-!s100 ?d5QFCi1@a7:kJ>WNJRBP3
+DEx4 work 4 main 0 22 b9YP8^JfkJT>H5:Vc`ACC2
+l412
+L264
+VOH<2@mH]:[oA6=?3=HEej1
+!s100 N1lgKQgzEALP;LjUO_Nlk0
 R13
 32
 R14
@@ -62,7 +62,7 @@ R17
 R18
 R19
 Emain_vhd_vec_tst
-Z20 w1688434762
+Z20 w1688594697
 R8
 R9
 R0
@@ -76,27 +76,27 @@ R13
 32
 R14
 !i10b 1
-Z23 !s108 1688434769.000000
-Z24 !s90 -work|work|Waveform.vwf.vht|
-Z25 !s107 Waveform.vwf.vht|
+R15
+Z23 !s90 -work|work|Waveform.vwf.vht|
+Z24 !s107 Waveform.vwf.vht|
 !i113 1
 R18
 R19
 Amain_arch
 R8
 R9
-Z26 DEx4 work 16 main_vhd_vec_tst 0 22 bAjZJ?=XSki31j0b2A<jS0
-l48
+Z25 DEx4 work 16 main_vhd_vec_tst 0 22 bAjZJ?=XSki31j0b2A<jS0
+l58
 L33
-VB18;OS9OVA6T>[KaRTQ9i3
-!s100 >B2V7?O:<c:`hKj1Wb7>T3
+Z26 VmE=P:eXmZRj:kBgQbY4W?1
+Z27 !s100 [bnJJD1bi>J8E:1n>39HA2
 R13
 32
 R14
 !i10b 1
+R15
 R23
 R24
-R25
 !i113 1
 R18
 R19

@@ -21,7 +21,7 @@ architecture beh of extensor is
 begin
     process(data_in)
     begin
-				data_out(15 downto 0) <= data_in;
-				data_out(31 downto 16) <= (others => data_in(15));
+        data_out <= (others => data_in(15));
+        data_out(15 downto 0) <= data_in;
     end process;
 end beh;
