@@ -1,6 +1,6 @@
--- Copyright (C) 2018  Intel Corporation. All rights reserved.
+-- Copyright (C) 2023  Intel Corporation. All rights reserved.
 -- Your use of Intel Corporation's design tools, logic functions 
--- and other software and tools, and its AMPP partner logic 
+-- and other software and tools, and any partner logic 
 -- functions, and any output files from any of the foregoing 
 -- (including device programming or simulation files), and any 
 -- associated documentation or information are expressly subject 
@@ -10,7 +10,8 @@
 -- agreement, including, without limitation, that your use is for
 -- the sole purpose of programming logic devices manufactured by
 -- Intel and sold by Intel or its authorized distributors.  Please
--- refer to the applicable agreement for further details.
+-- refer to the applicable agreement for further details, at
+-- https://fpgasoftware.intel.com/eula.
 
 -- *****************************************************************************
 -- This file contains a Vhdl test bench with test vectors .The test vectors     
@@ -18,7 +19,7 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "07/03/2023 22:39:22"
+-- Generated on "07/05/2023 11:51:02"
                                                              
 -- Vhdl Test Bench(with test vectors) for design  :          main
 -- 
@@ -33,26 +34,38 @@ END main_vhd_vec_tst;
 ARCHITECTURE main_arch OF main_vhd_vec_tst IS
 -- constants                                                 
 -- signals                                                   
+SIGNAL alu_out : STD_LOGIC_VECTOR(3 DOWNTO 0);
 SIGNAL clock : STD_LOGIC;
-SIGNAL current_adress : STD_LOGIC_VECTOR(7 DOWNTO 0);
-SIGNAL read_register : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL sub_z : STD_LOGIC_VECTOR(5 DOWNTO 0);
+SIGNAL instruction_funct : STD_LOGIC_VECTOR(5 DOWNTO 0);
+SIGNAL instruction_opcode : STD_LOGIC_VECTOR(5 DOWNTO 0);
+SIGNAL instruction_total : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL pin_name4 : STD_LOGIC;
+SIGNAL pin_name5 : STD_LOGIC;
+SIGNAL pin_name6 : STD_LOGIC;
 COMPONENT main
 	PORT (
+	alu_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 	clock : IN STD_LOGIC;
-	current_adress : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-	read_register : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	sub_z : OUT STD_LOGIC_VECTOR(5 DOWNTO 0)
+	instruction_funct : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+	instruction_opcode : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+	instruction_total : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+	pin_name4 : OUT STD_LOGIC;
+	pin_name5 : OUT STD_LOGIC;
+	pin_name6 : OUT STD_LOGIC
 	);
 END COMPONENT;
 BEGIN
 	i1 : main
 	PORT MAP (
 -- list connections between master ports and signals
+	alu_out => alu_out,
 	clock => clock,
-	current_adress => current_adress,
-	read_register => read_register,
-	sub_z => sub_z
+	instruction_funct => instruction_funct,
+	instruction_opcode => instruction_opcode,
+	instruction_total => instruction_total,
+	pin_name4 => pin_name4,
+	pin_name5 => pin_name5,
+	pin_name6 => pin_name6
 	);
 
 -- clock
