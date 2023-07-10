@@ -12,7 +12,7 @@ architecture beh of extensor_8to32 is
 begin
     process(data_in)
     begin
-        data_out <= (others => data_in(7));
+        data_out <= (others => '0');
         data_out(7 downto 0) <= data_in;
     end process;
 end beh;

@@ -29,23 +29,17 @@ begin
     begin
         case alu_op is
             when "00" =>
-                if funct = "100000" then
-                    alu_control_funct <= "0010"; -- add
-                else
-                    alu_control_funct <= "0000";
-                end if;
+                   alu_control_funct <= "0010"; -- add
             when "01" =>
-                if funct = "100010" then
                     alu_control_funct <= "0110"; -- subtract
-                else
-                    alu_control_funct <= "0000";
-                end if;
             when "10" =>
                 case funct is
-                    when "100100" => alu_control_funct <= "0000"; -- and
-                    when "100101" => alu_control_funct <= "0001"; -- or
-                    when "101010" => alu_control_funct <= "0111"; -- set on less than
-                    when others => alu_control_funct <= "0000";
+						when "XX0000" => alu_control_funct <= "0010"; -- add
+						when "XX0010" => alu_control_funct <= "0110";
+						when "XX0100" => alu_control_funct <= "0000"; -- and
+						when "XX0101" => alu_control_funct <= "0001"; -- or
+						when "XX1010" => alu_control_funct <= "0111"; -- set on less than
+                
                 end case;
             when "11" =>
                 alu_control_funct <= "0011"; -- subtract not equal

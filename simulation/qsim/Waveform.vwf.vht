@@ -1,6 +1,6 @@
--- Copyright (C) 2023  Intel Corporation. All rights reserved.
+-- Copyright (C) 2018  Intel Corporation. All rights reserved.
 -- Your use of Intel Corporation's design tools, logic functions 
--- and other software and tools, and any partner logic 
+-- and other software and tools, and its AMPP partner logic 
 -- functions, and any output files from any of the foregoing 
 -- (including device programming or simulation files), and any 
 -- associated documentation or information are expressly subject 
@@ -10,8 +10,7 @@
 -- agreement, including, without limitation, that your use is for
 -- the sole purpose of programming logic devices manufactured by
 -- Intel and sold by Intel or its authorized distributors.  Please
--- refer to the applicable agreement for further details, at
--- https://fpgasoftware.intel.com/eula.
+-- refer to the applicable agreement for further details.
 
 -- *****************************************************************************
 -- This file contains a Vhdl test bench with test vectors .The test vectors     
@@ -19,7 +18,7 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "07/05/2023 11:51:02"
+-- Generated on "07/09/2023 21:14:14"
                                                              
 -- Vhdl Test Bench(with test vectors) for design  :          main
 -- 
@@ -34,38 +33,47 @@ END main_vhd_vec_tst;
 ARCHITECTURE main_arch OF main_vhd_vec_tst IS
 -- constants                                                 
 -- signals                                                   
-SIGNAL alu_out : STD_LOGIC_VECTOR(3 DOWNTO 0);
+SIGNAL adress : STD_LOGIC_VECTOR(7 DOWNTO 0);
 SIGNAL clock : STD_LOGIC;
-SIGNAL instruction_funct : STD_LOGIC_VECTOR(5 DOWNTO 0);
-SIGNAL instruction_opcode : STD_LOGIC_VECTOR(5 DOWNTO 0);
+SIGNAL entra_pc : STD_LOGIC_VECTOR(7 DOWNTO 0);
 SIGNAL instruction_total : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL pin_name4 : STD_LOGIC;
-SIGNAL pin_name5 : STD_LOGIC;
-SIGNAL pin_name6 : STD_LOGIC;
+SIGNAL joinpc_instr : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL jump_control : STD_LOGIC;
+SIGNAL pos_adder : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL pre_tira : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL sai_ext : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL shifted_jump : STD_LOGIC_VECTOR(27 DOWNTO 0);
+SIGNAL shifter32_2 : STD_LOGIC_VECTOR(31 DOWNTO 0);
 COMPONENT main
 	PORT (
-	alu_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+	adress : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 	clock : IN STD_LOGIC;
-	instruction_funct : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
-	instruction_opcode : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+	entra_pc : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 	instruction_total : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	pin_name4 : OUT STD_LOGIC;
-	pin_name5 : OUT STD_LOGIC;
-	pin_name6 : OUT STD_LOGIC
+	joinpc_instr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+	jump_control : OUT STD_LOGIC;
+	pos_adder : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+	pre_tira : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+	sai_ext : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+	shifted_jump : OUT STD_LOGIC_VECTOR(27 DOWNTO 0);
+	shifter32_2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	);
 END COMPONENT;
 BEGIN
 	i1 : main
 	PORT MAP (
 -- list connections between master ports and signals
-	alu_out => alu_out,
+	adress => adress,
 	clock => clock,
-	instruction_funct => instruction_funct,
-	instruction_opcode => instruction_opcode,
+	entra_pc => entra_pc,
 	instruction_total => instruction_total,
-	pin_name4 => pin_name4,
-	pin_name5 => pin_name5,
-	pin_name6 => pin_name6
+	joinpc_instr => joinpc_instr,
+	jump_control => jump_control,
+	pos_adder => pos_adder,
+	pre_tira => pre_tira,
+	sai_ext => sai_ext,
+	shifted_jump => shifted_jump,
+	shifter32_2 => shifter32_2
 	);
 
 -- clock
@@ -73,10 +81,10 @@ t_prcs_clock: PROCESS
 BEGIN
 LOOP
 	clock <= '0';
-	WAIT FOR 10000 ps;
+	WAIT FOR 1000000 ps;
 	clock <= '1';
-	WAIT FOR 10000 ps;
-	IF (NOW >= 1000000 ps) THEN WAIT; END IF;
+	WAIT FOR 1000000 ps;
+	IF (NOW >= 100000000 ps) THEN WAIT; END IF;
 END LOOP;
 END PROCESS t_prcs_clock;
 END main_arch;

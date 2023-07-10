@@ -24,9 +24,20 @@ begin
                 alu_src <= '0';
                 reg_write <= '1';
                 alu_op <= "10";
-                
-            when "001000" => -- addi
+
+            when "000011" => -- jal q
                 reg_dest <= '0';
+                jump <= '1';
+                branch <= '0';
+                mem_read <= '0';
+                mem_to_reg <= '0';
+                mem_write <= '0';
+                alu_src <= '0';
+                reg_write <= '1';
+                alu_op <= "00"; 
+
+            when "001111" => -- lui
+                reg_dest <= '1';
                 jump <= '0';
                 branch <= '0';
                 mem_read <= '0';
@@ -34,7 +45,52 @@ begin
                 mem_write <= '0';
                 alu_src <= '1';
                 reg_write <= '1';
-                alu_op <= "00";
+                alu_op <= "10";  
+          
+            when "001000" => -- addi
+                reg_dest <= '1';
+                jump <= '0';
+                branch <= '0';
+                mem_read <= '0';
+                mem_to_reg <= '0';
+                mem_write <= '0';
+                alu_src <= '1';
+                reg_write <= '1';
+                alu_op <= "10";
+
+            when "001100" => -- andi
+                reg_dest <= '1';
+                jump <= '0';
+                branch <= '0';
+                mem_read <= '0';
+                mem_to_reg <= '0';
+                mem_write <= '0';
+                alu_src <= '1';
+                reg_write <= '1';
+                alu_op <= "10";
+
+            when "001101" => -- ori
+                reg_dest <= '1';
+                jump <= '0';
+                branch <= '0';
+                mem_read <= '0';
+                mem_to_reg <= '0';
+                mem_write <= '0';
+                alu_src <= '1';
+                reg_write <= '1';
+                alu_op <= "10";
+
+            when "001110" => -- xori
+                reg_dest <= '1';
+                jump <= '0';
+                branch <= '0';
+                mem_read <= '0';
+                mem_to_reg <= '0';
+                mem_write <= '0';
+                alu_src <= '1';
+                reg_write <= '1';
+                alu_op <= "10";
+
                 
             when "000100" => -- beq
                 reg_dest <= '0';
@@ -56,7 +112,7 @@ begin
                 mem_write <= '0';
                 alu_src <= '0';
                 reg_write <= '0';
-                alu_op <= "11";
+                alu_op <= "01";
                 
             when "000010" => -- jump
                 reg_dest <= '0';
@@ -86,11 +142,13 @@ begin
                 branch <= '0';
                 mem_read <= '0';
                 mem_to_reg <= '0';
-                mem_write <= '1';
+                mem_write <= '1';  
                 alu_src <= '1';
                 reg_write <= '0';
                 alu_op <= "00";
                 
+            
+            
             when others =>
                 -- Default values when opcode doesn't match any case
                 reg_dest <= '0';
