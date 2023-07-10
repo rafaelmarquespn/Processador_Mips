@@ -12,6 +12,6 @@ end entity;
 
 architecture beh of adder_pc is
 	constant one : std_logic_vector(7 downto 0) := "00000001";
-	begin
-	z <= x + one;
+		begin
+				z <= x + one;
 end beh;

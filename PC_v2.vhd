@@ -1,11 +1,3 @@
-------------------------------------------------------
--- Componente contador de programa (PC)
---
--- Próxima instrução a ser executada e retorna 
--- esse endereço em current_address
-------------------------------------------------------
-
-
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
@@ -20,16 +12,23 @@ end pc;
 
 architecture beh of pc is
 
-	signal address: std_logic_vector(7 downto 0):= "00000000";
-
+	signal address: std_logic_vector(7 downto 0) := "00000000";
+	signal second : std_logic := '0';
 	begin
 
 	process(ck)
 		begin
-		current_address <= address;
-		if ck='0' and ck'event then
-			address <= address_to_load;
-		end if;
-	end process;
-
+			if second = '1' then
+				current_address <= address;
+				if rising_edge(ck) then
+					address <= address_to_load;
+				end if;
+			end if;
+			second <= '1';
+		end process;
+	
 end beh;
+
+-- A fazer
+-- memória de instruçao está dois endereços a frente  do arquivo.mif
+-- jump está demorando duas instruções para executar instrução do jump

@@ -18,7 +18,7 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "07/05/2023 19:04:57"
+-- Generated on "07/09/2023 21:14:14"
                                                              
 -- Vhdl Test Bench(with test vectors) for design  :          main
 -- 
@@ -38,9 +38,11 @@ SIGNAL clock : STD_LOGIC;
 SIGNAL entra_pc : STD_LOGIC_VECTOR(7 DOWNTO 0);
 SIGNAL instruction_total : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL joinpc_instr : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL jump_control : STD_LOGIC;
 SIGNAL pos_adder : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL pre_tira : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL sai_ext : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL shifted_jump : STD_LOGIC_VECTOR(27 DOWNTO 0);
 SIGNAL shifter32_2 : STD_LOGIC_VECTOR(31 DOWNTO 0);
 COMPONENT main
 	PORT (
@@ -49,9 +51,11 @@ COMPONENT main
 	entra_pc : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 	instruction_total : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	joinpc_instr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+	jump_control : OUT STD_LOGIC;
 	pos_adder : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	pre_tira : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	sai_ext : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+	shifted_jump : OUT STD_LOGIC_VECTOR(27 DOWNTO 0);
 	shifter32_2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	);
 END COMPONENT;
@@ -64,9 +68,11 @@ BEGIN
 	entra_pc => entra_pc,
 	instruction_total => instruction_total,
 	joinpc_instr => joinpc_instr,
+	jump_control => jump_control,
 	pos_adder => pos_adder,
 	pre_tira => pre_tira,
 	sai_ext => sai_ext,
+	shifted_jump => shifted_jump,
 	shifter32_2 => shifter32_2
 	);
 
@@ -75,9 +81,9 @@ t_prcs_clock: PROCESS
 BEGIN
 LOOP
 	clock <= '0';
-	WAIT FOR 200000 ps;
+	WAIT FOR 1000000 ps;
 	clock <= '1';
-	WAIT FOR 200000 ps;
+	WAIT FOR 1000000 ps;
 	IF (NOW >= 100000000 ps) THEN WAIT; END IF;
 END LOOP;
 END PROCESS t_prcs_clock;

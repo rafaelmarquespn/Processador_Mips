@@ -16,9 +16,8 @@ entity shifter_26_28 is
 end entity;
 
 architecture beh of shifter_26_28 is
-	signal temp: std_logic_vector(n2-1 downto 0);
 
 	begin
-	temp <= std_logic_vector(resize(unsigned(x), n2)); -- Necessario para aumentar ou diminuir o numero de bits
-	y <= std_logic_vector(shift_left(signed(temp), k));
+	y(n2-1 downto n1) <= "00";
+	y(n1-1 downto 0) <= x; -- Necessario para aumentar ou diminuir o numero de bits
 end beh;
