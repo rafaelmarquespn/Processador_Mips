@@ -2,10 +2,11 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
 
 entity alu is 
     port (
-        in_1, in_2: std_logic_vector(31 downto 0);
+        in_1, in_2: in std_logic_vector(31 downto 0);
         alu_control_funct: in std_logic_vector(3 downto 0);
         zero: out std_logic;
         alu_result: out std_logic_vector(31 downto 0)
@@ -13,6 +14,7 @@ entity alu is
 end alu;
 
 architecture beh of alu is
+signal alu_result_sig : std_logic_vector(31 downto 0) := "00000000000000000000000000000000";
 begin
     process(alu_control_funct, in_1, in_2)
     begin
@@ -27,6 +29,10 @@ begin
                 alu_result <= in_1 and in_2;
             when "0001" => -- or
                 alu_result <= in_1 or in_2;
+				when "0101" => -- shift left para LUI
+						alu_result_sig(31 downto 16) <= in_2(15 downto 0);
+						alu_result_sig(15 downto 0) <= (others => '0');
+						alu_result <= alu_result_sig;
             when "0111" => -- set on less than
                 if in_1 < in_2 then
                     alu_result <= "00000000000000000000000000000001";

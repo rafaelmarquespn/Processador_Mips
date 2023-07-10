@@ -1,0 +1,18 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_arith.all;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity adress_adjuster is
+	port (
+		adress_in: in std_logic_vector(31 downto 0);
+		adress_out: out std_logic_vector(31 downto 0)
+	);
+end entity;
+
+architecture beh of adder_pc is
+	constant first_adress : std_logic_vector(31 downto 0) := "00010000000000010000000000000000";
+";
+		begin
+				adress_out <= adress_in - ;
+end beh;

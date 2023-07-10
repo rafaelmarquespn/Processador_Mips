@@ -64,7 +64,7 @@ architecture beh of registers is
 
     process(ck)
         begin
-        if ck='0' and ck'event and reg_write='1' then
+        if rising_edge(ck) and reg_write='1' then
             -- escreve no registrador da memoria quando o reg_write esta setado e em um ciclo de clock de descida
             reg_mem(to_integer(unsigned(write_reg))) <= write_data;
         end if;

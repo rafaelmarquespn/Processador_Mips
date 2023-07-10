@@ -45,7 +45,7 @@ begin
                 mem_write <= '0';
                 alu_src <= '1';
                 reg_write <= '1';
-                alu_op <= "10";  
+                alu_op <= "11";  
           
             when "001000" => -- addi
                 reg_dest <= '1';
