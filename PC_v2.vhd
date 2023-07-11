@@ -1,6 +1,8 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.std_logic_arith.all;
+
 
 entity pc is
 	port(
@@ -9,24 +11,20 @@ entity pc is
 		current_address: out std_logic_vector(7 downto 0)
 	);
 end pc;
-
 architecture beh of pc is
 
-	signal address: std_logic_vector(7 downto 0) := "00000000";
-	signal second : std_logic := '0';
-	begin
+    signal address: std_logic_vector(7 downto 0):= "00000000";
 
-	process(ck)
-		begin
-			if second = '1' then
-				current_address <= address;
-				if rising_edge(ck) then
-					address <= address_to_load;
-				end if;
-			end if;
-			second <= '1';
-		end process;
-	
+    begin
+
+    process(ck)
+        begin
+        current_address <= address;
+        if ck='0' and ck'event then
+            address <= address_to_load;
+        end if;
+    end process;
+
 end beh;
 
 -- A fazer

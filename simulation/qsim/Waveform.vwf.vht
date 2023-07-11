@@ -18,7 +18,7 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "07/10/2023 20:34:04"
+-- Generated on "07/11/2023 00:12:48"
                                                              
 -- Vhdl Test Bench(with test vectors) for design  :          main
 -- 
@@ -33,37 +33,45 @@ END main_vhd_vec_tst;
 ARCHITECTURE main_arch OF main_vhd_vec_tst IS
 -- constants                                                 
 -- signals                                                   
+SIGNAL adress : STD_LOGIC_VECTOR(7 DOWNTO 0);
 SIGNAL adress_reduzido : STD_LOGIC_VECTOR(8 DOWNTO 0);
 SIGNAL alu_control : STD_LOGIC_VECTOR(3 DOWNTO 0);
 SIGNAL alu_op : STD_LOGIC_VECTOR(1 DOWNTO 0);
 SIGNAL clock : STD_LOGIC;
 SIGNAL in_2_alu : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL instruction_total : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL jump_control : STD_LOGIC;
+SIGNAL mem_to_reg : STD_LOGIC;
+SIGNAL ram_saida : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL re_en : STD_LOGIC;
 SIGNAL read_data1 : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL read_data2 : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL read_reg1 : STD_LOGIC_VECTOR(4 DOWNTO 0);
 SIGNAL read_reg_2 : STD_LOGIC_VECTOR(4 DOWNTO 0);
+SIGNAL reg_dst : STD_LOGIC;
 SIGNAL rw_control : STD_LOGIC;
-SIGNAL to_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL ula_saida : STD_LOGIC_VECTOR(31 DOWNTO 0);
+SIGNAL wr_mem_en : STD_LOGIC;
 SIGNAL write_reg : STD_LOGIC_VECTOR(4 DOWNTO 0);
 COMPONENT main
 	PORT (
+	adress : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 	adress_reduzido : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
 	alu_control : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 	alu_op : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
 	clock : IN STD_LOGIC;
 	in_2_alu : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	instruction_total : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	jump_control : OUT STD_LOGIC;
+	mem_to_reg : OUT STD_LOGIC;
+	ram_saida : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+	re_en : OUT STD_LOGIC;
 	read_data1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	read_data2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	read_reg1 : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
 	read_reg_2 : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
+	reg_dst : OUT STD_LOGIC;
 	rw_control : OUT STD_LOGIC;
-	to_reg : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	ula_saida : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+	wr_mem_en : OUT STD_LOGIC;
 	write_reg : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
 	);
 END COMPONENT;
@@ -71,20 +79,24 @@ BEGIN
 	i1 : main
 	PORT MAP (
 -- list connections between master ports and signals
+	adress => adress,
 	adress_reduzido => adress_reduzido,
 	alu_control => alu_control,
 	alu_op => alu_op,
 	clock => clock,
 	in_2_alu => in_2_alu,
 	instruction_total => instruction_total,
-	jump_control => jump_control,
+	mem_to_reg => mem_to_reg,
+	ram_saida => ram_saida,
+	re_en => re_en,
 	read_data1 => read_data1,
 	read_data2 => read_data2,
 	read_reg1 => read_reg1,
 	read_reg_2 => read_reg_2,
+	reg_dst => reg_dst,
 	rw_control => rw_control,
-	to_reg => to_reg,
 	ula_saida => ula_saida,
+	wr_mem_en => wr_mem_en,
 	write_reg => write_reg
 	);
 

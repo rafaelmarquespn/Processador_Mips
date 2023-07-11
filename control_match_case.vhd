@@ -15,7 +15,7 @@ begin
     begin
         case opcode is
             when "000000" => -- R-type
-                reg_dest <= '1';
+                reg_dest <= '0'; -- invertido
                 jump <= '0';
                 branch <= '0';
                 mem_read <= '0';
@@ -126,7 +126,7 @@ begin
                 alu_op <= "00";
                 
             when "100011" => -- lw
-                reg_dest <= '0';
+                reg_dest <= '1'; -- invertido
                 jump <= '0';
                 branch <= '0';
                 mem_read <= '1';
@@ -137,7 +137,7 @@ begin
                 alu_op <= "00";
                 
             when "101011" => -- sw
-                reg_dest <= '0';
+                reg_dest <= '1'; -- invertido
                 jump <= '0';
                 branch <= '0';
                 mem_read <= '0';
