@@ -18,7 +18,7 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "07/11/2023 01:10:43"
+-- Generated on "07/11/2023 09:53:38"
                                                              
 -- Vhdl Test Bench(with test vectors) for design  :          main
 -- 
@@ -33,15 +33,14 @@ END main_vhd_vec_tst;
 ARCHITECTURE main_arch OF main_vhd_vec_tst IS
 -- constants                                                 
 -- signals                                                   
-SIGNAL adress : STD_LOGIC_VECTOR(7 DOWNTO 0);
-SIGNAL adress_reduzido : STD_LOGIC_VECTOR(8 DOWNTO 0);
+SIGNAL adress_reduzido : STD_LOGIC_VECTOR(15 DOWNTO 0);
+SIGNAL banco_reg : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL clock : STD_LOGIC;
 SIGNAL clock_adiantado : STD_LOGIC;
 SIGNAL in_2_alu : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL instruction_total : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL mem_to_reg : STD_LOGIC;
 SIGNAL pc_pre : STD_LOGIC_VECTOR(7 DOWNTO 0);
-SIGNAL ram_saida : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL re_en : STD_LOGIC;
 SIGNAL read_data1 : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL read_data2 : STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -54,15 +53,14 @@ SIGNAL wr_mem_en : STD_LOGIC;
 SIGNAL write_reg : STD_LOGIC_VECTOR(4 DOWNTO 0);
 COMPONENT main
 	PORT (
-	adress : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-	adress_reduzido : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+	adress_reduzido : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+	banco_reg : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	clock : IN STD_LOGIC;
 	clock_adiantado : IN STD_LOGIC;
 	in_2_alu : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	instruction_total : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	mem_to_reg : OUT STD_LOGIC;
 	pc_pre : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-	ram_saida : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	re_en : OUT STD_LOGIC;
 	read_data1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	read_data2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -79,15 +77,14 @@ BEGIN
 	i1 : main
 	PORT MAP (
 -- list connections between master ports and signals
-	adress => adress,
 	adress_reduzido => adress_reduzido,
+	banco_reg => banco_reg,
 	clock => clock,
 	clock_adiantado => clock_adiantado,
 	in_2_alu => in_2_alu,
 	instruction_total => instruction_total,
 	mem_to_reg => mem_to_reg,
 	pc_pre => pc_pre,
-	ram_saida => ram_saida,
 	re_en => re_en,
 	read_data1 => read_data1,
 	read_data2 => read_data2,
@@ -115,16 +112,12 @@ END PROCESS t_prcs_clock_adiantado;
 -- clock
 t_prcs_clock: PROCESS
 BEGIN
+LOOP
+	clock <= '0';
+	WAIT FOR 10000 ps;
 	clock <= '1';
 	WAIT FOR 10000 ps;
-	FOR i IN 1 TO 49
-	LOOP
-		clock <= '0';
-		WAIT FOR 10000 ps;
-		clock <= '1';
-		WAIT FOR 10000 ps;
-	END LOOP;
-	clock <= '0';
-WAIT;
+	IF (NOW >= 1000000 ps) THEN WAIT; END IF;
+END LOOP;
 END PROCESS t_prcs_clock;
 END main_arch;

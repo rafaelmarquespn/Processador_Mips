@@ -19,9 +19,8 @@ architecture beh of pc is
 
     process(ck)
         begin
-        current_address <= address;
-        if ck='0' and ck'event then
-            address <= address_to_load;
+        if rising_edge(ck) then
+            current_address <= address_to_load;
         end if;
     end process;
 
